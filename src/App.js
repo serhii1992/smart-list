@@ -1,10 +1,11 @@
 import "./styles.css";
+import List from "./components/List";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <h1 className="App__title">Cписок заметок</h1>
+      <List />
     </div>
   );
 }

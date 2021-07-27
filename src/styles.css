@@ -1,4 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   font-family: sans-serif;
+  width: 400px;
+  margin: 0 auto;
+  min-height: 400px;
+}
+
+.App__title {
   text-align: center;
+  margin: 0;
+}
+
+.list {
+  margin-top: 10px;
+  padding: 5px;
+  min-height: 300px;
+  background: #eeebf5;
+}
+.list li {
+  position: relative;
+  list-style: none;
+  margin: 15px;
+  background: #a1b8ff;
+  padding: 5px 15px 5px 5px;
+}
+
+.removeElement {
+  cursor: pointer;
+  display: block;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.close {
+  height: 100%;
+  position: relative;
+}
+
+.close::after,
+.close::before {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  display: block;
+  width: 100%;
+  height: 2px;
+  right: 0;
+  border-radius: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+}
+
+.close::after {
+  transform: rotate(45deg);
+}
+
+.close::before {
+  transform: rotate(-45deg);
+}
+
+.form-submit {
+  display: flex;
+}
+
+.form-submit__input {
+  border: none;
+  background: #e5e3e6;
+  padding: 15px 10px;
+  width: 75%;
+}
+
+.form-submit__btn {
+  border: none;
+  background: #00c6f2;
+  width: 25%;
 }
