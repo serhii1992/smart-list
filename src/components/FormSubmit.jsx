@@ -15,12 +15,12 @@ export default function FormSubmit({ addItemList }) {
       <form onSubmit={handelSubmit} className="form-submit">
         <input
           type="text"
-          placeholder="Введите заметку"
+          placeholder="Enter a note"
           value={textImput}
           onChange={(e) => setTextImput(e.target.value)}
           className="form-submit__input"
         />
-        <Button>Добавить</Button>
+        <Button>ADD</Button>
       </form>
     </>
   );

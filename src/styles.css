@@ -22,14 +22,22 @@
   background: #eeebf5;
 }
 .list li {
+  display: flex;
+  word-break: break-all;
   position: relative;
   list-style: none;
   margin: 15px;
-  background: #a1b8ff;
-  padding: 5px 15px 5px 5px;
+  /* background: #a1b8ff; */
+  padding: 5px 35px 5px 5px;
+}
+.list__content {
+  border: 1px solid #d1c9c9;
+  width: 100%;
+  padding: 5px;
 }
 
 .removeElement {
+  position: relative;
   cursor: pointer;
   display: block;
   height: 20px;
@@ -43,6 +51,10 @@
 .close {
   height: 100%;
   position: relative;
+}
+
+.close:hover {
+  background: #ffb3b3;
 }
 
 .close::after,
@@ -80,7 +92,31 @@
 }
 
 .form-submit__btn {
+  cursor: pointer;
   border: none;
   background: #00c6f2;
   width: 25%;
+}
+
+.list__oder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list__btn-down,
+.list__btn-up {
+  cursor: pointer;
+  background: #d9dbd9;
+  border: none;
+  width: 50px;
+  margin: 0 4px 2px 2px;
+  padding: 3px;
+  font-size: 12px;
+}
+
+.list__btn-up {
+}
+
+.list__btn-down {
 }
