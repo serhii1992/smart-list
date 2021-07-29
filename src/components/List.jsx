@@ -23,19 +23,28 @@ export default function List() {
     setList(result);
   };
 
-  const upElement = (elem, index, arr) => {
-    arr.splice(index, 1);
-    arr.splice(index - 1, 0, elem);
+  const upElement = (index, arr) => {
+    //current element - up
+    arr[index].order -= 1;
+    //prev element - down
+    arr[index - 1].order += 1;
+    arr.sort((a, b) => {
+      return a.order - b.order;
+    });
     setList([...arr]);
   };
 
-  const downElement = (elem, index, arr) => {
-    arr.splice(index, 1);
-    arr.splice(index + 1, 0, elem);
+  const downElement = (index, arr) => {
+    //current element - up
+    arr[index].order += 1;
+    //prev element - down
+    arr[index + 1].order -= 1;
+    arr.sort((a, b) => {
+      return a.order - b.order;
+    });
     setList([...arr]);
   };
 
-  console.log(list);
   return (
     <>
       <ul className="list">
@@ -46,7 +55,7 @@ export default function List() {
                 {index !== 0 && (
                   <button
                     onClick={() => {
-                      upElement(elem, index, arr);
+                      upElement(index, arr);
                     }}
                     className="list__btn-up"
                   >
@@ -56,7 +65,7 @@ export default function List() {
                 {index !== arr.length - 1 && (
                   <button
                     onClick={() => {
-                      downElement(elem, index, arr);
+                      downElement(index, arr);
                     }}
                     className="list__btn-down"
                   >
