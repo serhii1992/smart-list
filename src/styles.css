@@ -61,6 +61,11 @@
   right: 10px;
   transform: translateY(-50%);
 }
+
+.removeElement.removeElement--sub {
+  height: 12px;
+  width: 12px;
+}
 .close {
   height: 100%;
   position: relative;
@@ -124,8 +129,10 @@
   font-size: 12px;
 }
 
-.list__btn-up {
+.sub-list {
+  font-size: 12px;
 }
 
-.list__btn-down {
+.sub-list li {
+  margin: 2px 5px 5px 15px;
 }
