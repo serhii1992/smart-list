@@ -1,29 +1,26 @@
-export default function ListContent({ list, setList, elem, index }) {
-  const removeItemList = (elem) => {
+import SubList from "./SubList";
+
+export default function ListContent({ list, setList, elemList, indexList }) {
+  const removeItemList = (elemList) => {
     let result = list.filter((e) => {
-      return e.id !== elem.id;
+      return e.id !== elemList.id;
     });
     setList(result);
   };
 
   return (
     <div className="list__content">
-      <div className="list__text">{elem.value}</div>
-      {false && (
-        <ul className="">
-          {elem.subList.map((elem, index, arr) => {
-            return (
-              <li key={elem.id}>
-                <div className="list__text">{elem.suBvalue}</div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <div className="list__text">{elemList.value}</div>
+      <SubList
+        list={list}
+        setList={setList}
+        elemList={elemList}
+        indexList={indexList}
+      />
       <span
         className="removeElement"
         onClick={(index) => {
-          removeItemList(elem);
+          removeItemList(elemList);
         }}
       >
         <div className="close"></div>

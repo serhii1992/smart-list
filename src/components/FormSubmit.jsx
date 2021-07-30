@@ -4,8 +4,8 @@ import { useState } from "react";
 export default function FormSubmit({
   addItemList,
   addItemSubList,
-  elem,
-  index
+  elemList,
+  indexList
 }) {
   const [textImput, setTextImput] = useState("");
 
@@ -15,7 +15,7 @@ export default function FormSubmit({
       addItemList(textImput);
     }
     if (addItemSubList) {
-      addItemSubList(textImput, elem, index);
+      addItemSubList(textImput, elemList, indexList);
     }
     setTextImput("");
   };
