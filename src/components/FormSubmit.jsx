@@ -1,12 +1,22 @@
 import Button from "./Button";
 import { useState } from "react";
 
-export default function FormSubmit({ addItemList }) {
+export default function FormSubmit({
+  addItemList,
+  addItemSubList,
+  elem,
+  index
+}) {
   const [textImput, setTextImput] = useState("");
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    addItemList(textImput);
+    if (addItemList) {
+      addItemList(textImput);
+    }
+    if (addItemSubList) {
+      addItemSubList(textImput, elem, index);
+    }
     setTextImput("");
   };
 

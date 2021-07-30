@@ -1,8 +1,21 @@
 import FormSubmit from "./FormSubmit";
+import OderBtn from "./OderBtn";
+import ListContent from "./ListContent";
 import { useState } from "react";
 
 export default function List() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([
+    {
+      value: null,
+      id: null,
+      order: null,
+      subList: [
+        {
+          suBvalue: null
+        }
+      ]
+    }
+  ]);
 
   const addItemList = (value) => {
     value &&
@@ -11,38 +24,20 @@ export default function List() {
         {
           value,
           id: list.length + 1,
-          order: list.length + 1
+          order: list.length + 1,
+          subList: [
+            {
+              suBvalue: null
+            }
+          ]
         }
       ]);
   };
 
-  const removeItemList = (elem) => {
-    let result = list.filter((e) => {
-      return e.id !== elem.id;
-    });
-    setList(result);
-  };
-
-  const upElement = (index, arr) => {
-    //current element - up
-    arr[index].order -= 1;
-    //prev element - down
-    arr[index - 1].order += 1;
-    arr.sort((a, b) => {
-      return a.order - b.order;
-    });
-    setList([...arr]);
-  };
-
-  const downElement = (index, arr) => {
-    //current element - up
-    arr[index].order += 1;
-    //prev element - down
-    arr[index + 1].order -= 1;
-    arr.sort((a, b) => {
-      return a.order - b.order;
-    });
-    setList([...arr]);
+  const addItemSubList = (suBvalue, elem, index) => {
+    console.log(elem.subList);
+    list[index].subList = [...elem.subList, { suBvalue }];
+    setList([...list]);
   };
 
   return (
@@ -50,45 +45,25 @@ export default function List() {
       <ul className="list">
         {list.map((elem, index, arr) => {
           return (
-            <li key={index}>
-              <div className="list__oder">
-                {index !== 0 && (
-                  <button
-                    onClick={() => {
-                      upElement(index, arr);
-                    }}
-                    className="list__btn-up"
-                  >
-                    UP
-                  </button>
-                )}
-                {index !== arr.length - 1 && (
-                  <button
-                    onClick={() => {
-                      downElement(index, arr);
-                    }}
-                    className="list__btn-down"
-                  >
-                    DOWN
-                  </button>
-                )}
-              </div>
-              <div className="list__content">
-                <div className="list__text">{elem.value}</div>
-                <span
-                  className="removeElement"
-                  onClick={(index) => {
-                    removeItemList(elem);
-                  }}
-                >
-                  <div className="close"></div>
-                </span>
-              </div>
+            <li key={elem.id}>
+              <OderBtn index={index} arr={arr} setList={setList} />
+              <ListContent
+                index={index}
+                list={list}
+                elem={elem}
+                setList={setList}
+              />
+              <FormSubmit
+                index={index}
+                elem={elem}
+                addItemSubList={addItemSubList}
+              />
+              {!list.subList && <button>AddSublist</button>}
             </li>
           );
         })}
       </ul>
-      <FormSubmit addItemList={addItemList} />
+      <FormSubmit list={list} setList={setList} addItemList={addItemList} />
     </>
   );
 }
