@@ -1,4 +1,4 @@
-export default function OderBtn({ index, arr, setList }) {
+export default function OrderBtn({ index, arr, setList }) {
   const upElement = (index, arr) => {
     //current element - up
     arr[index].order -= 1;

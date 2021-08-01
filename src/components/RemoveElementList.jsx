@@ -1,20 +1,7 @@
-export default function RemoveElementList({ list, elemList, setList }) {
-  const removeItemList = (elemList) => {
-    console.log(list);
-    let result = list.filter((e) => {
-      return e.id !== elemList.id;
-    });
-    setList(result);
-  };
-
+export default function RemoveElementList({ onRemoveClick, className }) {
   return (
     <>
-      <span
-        className="removeElement"
-        onClick={() => {
-          removeItemList(elemList);
-        }}
-      >
+      <span className={` removeElement ${className}`} onClick={onRemoveClick}>
         <div className="close"></div>
       </span>
     </>

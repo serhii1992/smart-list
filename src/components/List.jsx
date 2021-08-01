@@ -1,5 +1,5 @@
 import FormSubmit from "./FormSubmit";
-import OderBtn from "./OderBtn";
+import OrderBtn from "./OrderBtn";
 import ListContent from "./ListContent";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ export default function List() {
         {list.map((elem, index, arr) => {
           return (
             <li key={elem.id}>
-              <OderBtn index={index} arr={arr} setList={setList} />
+              <OrderBtn index={index} arr={arr} setList={setList} />
               <ListContent
                 indexList={index}
                 list={list}
@@ -37,7 +37,7 @@ export default function List() {
           );
         })}
       </ul>
-      <FormSubmit list={list} setList={setList} addItemList={addItemList} />
+      <FormSubmit list={list} setList={setList} onSubmit={addItemList} />
     </>
   );
 }

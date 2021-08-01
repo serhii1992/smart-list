@@ -1,23 +1,14 @@
 import Button from "./Button";
 import { useState } from "react";
 
-export default function FormSubmit({
-  addItemList,
-  addItemSubList,
-  elemList,
-  indexList
-}) {
-  const [textImput, setTextImput] = useState("");
+export default function FormSubmit({ onSubmit, elemList, indexList }) {
+  console.log("onSubmit", onSubmit);
+  const [textInput, setTextInput] = useState("");
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (addItemList) {
-      addItemList(textImput);
-    }
-    if (addItemSubList) {
-      addItemSubList(textImput, elemList, indexList);
-    }
-    setTextImput("");
+    onSubmit(textInput, elemList, indexList);
+    setTextInput("");
   };
 
   return (
@@ -26,8 +17,8 @@ export default function FormSubmit({
         <input
           type="text"
           placeholder="Enter a note"
-          value={textImput}
-          onChange={(e) => setTextImput(e.target.value)}
+          value={textInput}
+          onChange={(e) => setTextInput(e.target.value)}
           className="form-submit__input"
         />
         <Button>ADD</Button>

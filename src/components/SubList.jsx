@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormSubmit from "./FormSubmit";
+import RemoveElementList from "./RemoveElementList";
 
 export default function SubList({ elemList, indexList, setList, list }) {
   const [showInput, setShowInput] = useState(false);
@@ -14,19 +15,18 @@ export default function SubList({ elemList, indexList, setList, list }) {
     }
   };
 
-  const removeItemSubList = (elemList, elem) => {
-    console.log(elemList, elem);
+  const showInputSubText = () => {
+    setShowInput(true);
+  };
+
+  const removeItemSubList = (elemSub) => {
     elemList.subList = elemList.subList.filter((e) => {
-      return e.id !== elem.id;
+      return e.id !== elemSub.id;
     });
     setList([...list]);
     if (elemList.subList.length < 1) {
       setShowInput(false);
     }
-  };
-
-  const showInputSubText = (showInput) => {
-    setShowInput(true);
   };
 
   return (
@@ -36,14 +36,10 @@ export default function SubList({ elemList, indexList, setList, list }) {
           return (
             <li key={index}>
               <div className="list__text">{elem.subValue}</div>
-              <span
-                className="removeElement removeElement--sub"
-                onClick={() => {
-                  removeItemSubList(elemList, elem);
-                }}
-              >
-                <div className="close"></div>
-              </span>
+              <RemoveElementList
+                onRemoveClick={() => removeItemSubList(elem)}
+                className="removeElement--sub"
+              />
             </li>
           );
         })}
@@ -52,7 +48,7 @@ export default function SubList({ elemList, indexList, setList, list }) {
         <FormSubmit
           elemList={elemList}
           indexList={indexList}
-          addItemSubList={addItemSubList}
+          onSubmit={addItemSubList}
         />
       )}
       {!showInput && <button onClick={showInputSubText}>AddSublist</button>}
