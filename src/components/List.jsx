@@ -32,7 +32,6 @@ export default function List() {
                 elemList={elem}
                 setList={setList}
               />
-              {/* {!list.subList && <button>AddSublist</button>} */}
             </li>
           );
         })}

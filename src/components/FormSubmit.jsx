@@ -2,7 +2,6 @@ import Button from "./Button";
 import { useState } from "react";
 
 export default function FormSubmit({ onSubmit, elemList, indexList }) {
-  console.log("onSubmit", onSubmit);
   const [textInput, setTextInput] = useState("");
 
   const handelSubmit = (e) => {
